@@ -38,8 +38,8 @@ int Calculadora::Multiplicacao(int numero1, int numero2){
 int Calculadora::Resto(int numero1, int numero2){
     return numero1 % numero2;
 }
-double Calculadora::Resultado(int numero1, int numero2, char operacao){
-    double resultado{};
+int Calculadora::Resultado(int numero1, int numero2, char operacao){
+    int resultado{};
     Calculadora c;
     switch(operacao){
         case '+': 
@@ -58,14 +58,13 @@ double Calculadora::Resultado(int numero1, int numero2, char operacao){
             resultado = c.Resto(numero1, numero2);
             break;
         default:
-            std::cout<<"ERRO, DIGITE UM COMANDO VÁLIDO";
+            std::cout<<"ERRO, DIGITE UM COMANDO VÁLIDO\n";
     }
     return resultado;
 }
-std::vector<std::string> Calculadora::Historico(std::string numero1, std::string numero2, char operacao)
-{
+std::vector<std::string> Calculadora::Historico(int numero1, int numero2, char operacao){
     std::vector<std::string> historico;
-    std::string op = numero1 + " " + operacao + " " + numero2;
+    std::string op = std::to_string(numero1) + " " + operacao + " " + std::to_string(numero2) + " = "+ std::to_string(Resultado(numero1,numero2,operacao));
     //std::cout<<op;
     historico.push_back(op);
     return historico;
