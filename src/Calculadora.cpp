@@ -3,7 +3,6 @@ Calculadora::Calculadora(){
 
 }
 Calculadora::~Calculadora(){
-   // Limpa();
 }
 char Calculadora:: GetOperacao(){
     return Operacao;
@@ -62,15 +61,8 @@ int Calculadora::Resultado(int numero1, int numero2, char operacao){
     }
     return resultado;
 }
-std::vector<std::string> Calculadora::Historico(int numero1, int numero2, char operacao){
-    std::vector<std::string> historico;
+void Calculadora::Imprime(int numero1, int numero2, char operacao){
     std::string op = std::to_string(numero1) + " " + operacao + " " + std::to_string(numero2) + " = "+ std::to_string(Resultado(numero1,numero2,operacao));
-    //std::cout<<op;
-    historico.push_back(op);
-    return historico;
+    std::cout<<op;
 }
-/*void Calculadora::Limpa(){
-    Calculadora c;
 
-   c.Historico.clear(); 
-}*/

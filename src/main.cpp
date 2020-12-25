@@ -3,34 +3,57 @@
 using namespace std;
 void display_menu();
 int main(){
-    display_menu();
-    Calculadora c;
-    int a,b;
-    cout<<"digite os numeros"<<endl;
-    cin>>a>>b;
-    cout<<"digite a operação"<<endl;
-    char op;
-    cin>>op;
-    double result = c.Resultado(a,b,op);
-    cout<<"o resultado é "<<result<<endl;
-    cout<<c.Historico(a,b,op).at(0)<<endl;
-    //cout<<"imprimindo historico:::  "<<endl;
-    //cout<<c.Historico(to_string(a),to_string(b),op).at(0)<<endl;
-    //vector<string> hist = c.Historico(to_string(a), to_string(b), op);
-   // cout<<"mais dois:\n";
-   // cin>>a>>b>>op;
-   // c.Historico(to_string(a), to_string(b), op);
-   // cout << "mais dois:\n";
-   // cin >> a >> b >> op;
-    //c.Historico(to_string(a), to_string(b), op);
-   // cout<<"\nzgora sim\n";
-    //for(auto h : hist){
-    //cout<< h<<endl;
-   // }
-    
 
-    return 0;
+    Calculadora c {};
+    char op{};
+    int resultado{};
+    display_menu();
+    int a{}, b{};
+    cin >> a;
+    cin >> op;
+    cin >> b;
+    c.Imprime(a, b, op);
+    resultado = c.Resultado(a, b, op);
+
+    do{
+        cout << "Deseja fazer outra operação com o resultado? S/N? " cin >> op;
+        if (toupper(op) == 'S'){
+            display_menu();
+            cout << "Digite a operação seguida do outro número: " cin >> op;
+            cin >> a;
+            c.Imprime(resultado, a, op);
+            int aux = resultado;
+            resultado = c.Resultado(aux, a, op);
+        }
+        else{
+            display_menu();
+        }
+
+    } while (cin >> op);
+    
+        return 0;
 }
 void display_menu(){
-    cout<<"\\\\\\\\\\\\\\\\\\\\\\\\"<<endl;
+    cout << "_____________________________________________________________\n" << endl;
+    cout << "----------------- CALCULADORA PARA INTEIROS -----------------" << endl; 
+    cout << "_____________________________________________________________" << endl;
+    cout << "      ATENÇÃO!!! Apenas operações com números inteiros.      " << endl;
+    cout << "_____________________________________________________________" << endl;
+    cout << "---------------------- SOMA -> Digite + ---------------------" << endl;
+    cout << "-------------------- SUBTRAÇÃO-> Digite - -------------------" << endl;
+    cout << "------------------ MULTIPLICAÇÃO -> Digite * ----------------" << endl;
+    cout << "--------------------- DIVISÃO -> Digite / -------------------" << endl;
+    cout << "---------------------- RESTO -> Digite % --------------------" << endl;
+    cout << "_____________________________________________________________" << endl;
+    cout << "     Para utilizar a calculadora digite os dois números      " << endl;
+    cout << "   com o sinal da operação no meio deles, por exemplo 2 + 5  " << endl;
+    cout << "_____________________________________________________________" << endl;
+    cout << "   Para usar seu resultado e fazer outra operação com ele,   " << endl;
+    cout << "       digite s ou S, e em caso negativo digite n ou N       " << endl;
+    cout << "_____________________________________________________________" << endl;
+    cout << "   Para sair da calculadora, pressione as teclas Ctrl + D    " << endl;
+    cout << "_____________________________________________________________\n" << endl;
+    cout << " ************ Obrigada por utilizar a calculadora ***********" << endl;
+    cout << "_____________________________________________________________\n" << endl;
+    cout << "Digite a operação desejada: ";
 }

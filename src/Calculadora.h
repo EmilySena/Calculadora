@@ -17,8 +17,7 @@ public:
    int Multiplicacao(int numero1, int numero2);
    int Divisao(int numero1, int numero2);
    int Resto(int numero1, int numero2); 
-   void Limpa();
-   std::vector<std::string> Historico(int numero1, int numero2, char operacao);
+   void Imprime(int numero1, int numero2, char operacao);
 
 
 
