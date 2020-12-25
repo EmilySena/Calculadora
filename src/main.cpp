@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 #include "Calculadora.h"
 using namespace std;
+void display_menu();
 int main(){
+    display_menu();
     Calculadora c;
     int a,b;
     cout<<"digite os numeros"<<endl;
@@ -28,4 +30,7 @@ int main(){
     
 
     return 0;
+}
+void display_menu(){
+    cout<<"\\\\\\\\\\\\\\\\\\\\\\\\"<<endl;
 }
