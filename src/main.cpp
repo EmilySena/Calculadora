@@ -27,8 +27,9 @@ int main(){
             c.Imprime(resultado, a, op);
             int aux = resultado;
             resultado = c.Resultado(aux, a, op);
+            break;
         }
-        else{
+        else if(toupper(op) == 'N'){
             display_menu();
             cout << "Digite a operação desejada: ";
         }
