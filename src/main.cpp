@@ -8,6 +8,7 @@ int main(){
     char op{};
     int resultado{};
     display_menu();
+    cout << "Digite a operação desejada: ";
     int a{}, b{};
     cin >> a;
     cin >> op;
@@ -16,10 +17,12 @@ int main(){
     resultado = c.Resultado(a, b, op);
 
     do{
-        cout << "Deseja fazer outra operação com o resultado? S/N? " cin >> op;
+        cout << "Deseja fazer outra operação com o resultado? S/N? ";
+        //cin >> op;
         if (toupper(op) == 'S'){
             display_menu();
-            cout << "Digite a operação seguida do outro número: " cin >> op;
+            cout << "Digite a operação seguida do outro número: ";
+            cin >> op;
             cin >> a;
             c.Imprime(resultado, a, op);
             int aux = resultado;
@@ -27,6 +30,7 @@ int main(){
         }
         else{
             display_menu();
+            cout << "Digite a operação desejada: ";
         }
 
     } while (cin >> op);
@@ -48,12 +52,9 @@ void display_menu(){
     cout << "     Para utilizar a calculadora digite os dois números      " << endl;
     cout << "   com o sinal da operação no meio deles, por exemplo 2 + 5  " << endl;
     cout << "_____________________________________________________________" << endl;
-    cout << "   Para usar seu resultado e fazer outra operação com ele,   " << endl;
-    cout << "       digite s ou S, e em caso negativo digite n ou N       " << endl;
-    cout << "_____________________________________________________________" << endl;
     cout << "   Para sair da calculadora, pressione as teclas Ctrl + D    " << endl;
     cout << "_____________________________________________________________\n" << endl;
     cout << " ************ Obrigada por utilizar a calculadora ***********" << endl;
     cout << "_____________________________________________________________\n" << endl;
-    cout << "Digite a operação desejada: ";
+  //  cout << "Digite a operação desejada: ";
 }

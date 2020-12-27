@@ -63,6 +63,6 @@ int Calculadora::Resultado(int numero1, int numero2, char operacao){
 }
 void Calculadora::Imprime(int numero1, int numero2, char operacao){
     std::string op = std::to_string(numero1) + " " + operacao + " " + std::to_string(numero2) + " = "+ std::to_string(Resultado(numero1,numero2,operacao));
-    std::cout<<op;
+    std::cout<<op<<std::endl;
 }
 
