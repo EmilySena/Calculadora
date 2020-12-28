@@ -2,6 +2,8 @@
 #include "Calculadora.h"
 using namespace std;
 void display_menu();
+void nova_operacao(Calculadora &c, int a, int b, int &resultado, char op);
+void mesmo_numero(Calculadora &c, int a, int &resultado, char op);
 int main(){
 
     Calculadora c {};
@@ -15,26 +17,62 @@ int main(){
     cin >> b;
     c.Imprime(a, b, op);
     resultado = c.Resultado(a, b, op);
-
+   // while(cin>>op){
+    bool done = true;
     do{
         cout << "Deseja fazer outra operação com o resultado? S/N? ";
-        //cin >> op;
+        cin >> op;
+        switch(op){
+            case 'S':
+            case 's':
+                mesmo_numero(c, a, resultado, op);
+                break;
+            case 'N':
+            case 'n':
+                nova_operacao(c, a, b, resultado, op);
+                break;
+            default:
+                cout << "Opção inválida, digite uma opção válida." << endl;
+        }
+        if (!(cin >> op))
+        {
+            done = false;
+        }
+        else{
+            continue;
+        }
+        /*
         if (toupper(op) == 'S'){
-            display_menu();
+           // display_menu();
             cout << "Digite a operação seguida do outro número: ";
             cin >> op;
             cin >> a;
+            if (!(cin >> op)){
+                break;
+            }
             c.Imprime(resultado, a, op);
             int aux = resultado;
             resultado = c.Resultado(aux, a, op);
-            break;
+            continue;
         }
         else if(toupper(op) == 'N'){
-            display_menu();
+            //display_menu();
             cout << "Digite a operação desejada: ";
+            cin>>a;
+            cin>>op;
+            cin>>b;
+            if(!(cin>>op)){
+                break;
+            }
+            c.Imprime(a, b, op);
+            resultado = c.Resultado(a, b, op);
+        } else if (!(cin>>op)){
+            done = false;
         }
-
-    } while (cin >> op);
+        else /*if(toupper(op)!='S'||'N')*//*{
+            cout<< "Opção inválida, digite uma opção válida."<< endl;
+        }*/
+        } while (done);
     
         return 0;
 }
@@ -58,4 +96,29 @@ void display_menu(){
     cout << " ************ Obrigada por utilizar a calculadora ***********" << endl;
     cout << "_____________________________________________________________\n" << endl;
   //  cout << "Digite a operação desejada: ";
+}
+void nova_operacao(Calculadora& c, int a, int b, int& resultado, char op){
+    cout << "Digite a operação desejada: ";
+    cin >> a;
+    cin >> op;
+    cin >> b;
+    /*if (!(cin >> op))
+    {
+        break;
+    }*/
+    c.Imprime(a, b, op);
+    resultado = c.Resultado(a, b, op);
+}
+void mesmo_numero(Calculadora &c, int a, int &resultado, char op)
+{
+    cout << "Digite a operação seguida do outro número: ";
+    cin >> op;
+    cin >> a;
+    /*if (!(cin >> op))
+    {
+        break;
+    }*/
+    c.Imprime(resultado, a, op);
+    int aux = resultado;
+    resultado = c.Resultado(aux, a, op);
 }
