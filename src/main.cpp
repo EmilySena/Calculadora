@@ -102,10 +102,6 @@ void nova_operacao(Calculadora& c, int a, int b, int& resultado, char op){
     cin >> a;
     cin >> op;
     cin >> b;
-    /*if (!(cin >> op))
-    {
-        break;
-    }*/
     c.Imprime(a, b, op);
     resultado = c.Resultado(a, b, op);
 }
@@ -114,10 +110,6 @@ void mesmo_numero(Calculadora &c, int a, int &resultado, char op)
     cout << "Digite a operação seguida do outro número: ";
     cin >> op;
     cin >> a;
-    /*if (!(cin >> op))
-    {
-        break;
-    }*/
     c.Imprime(resultado, a, op);
     int aux = resultado;
     resultado = c.Resultado(aux, a, op);
